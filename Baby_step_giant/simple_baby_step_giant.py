@@ -10,7 +10,7 @@ from math import ceil, sqrt
   
   '''
 
-def bsgs(alfa, beta, p):
+def babystepgiantstep(alfa, beta, p):
 
     N = ceil(sqrt(p - 1))  # p-1 si p es primo // Si n = √ p −1, entonces k = q*n+r, por lo que
 
@@ -44,7 +44,7 @@ if __name__ == '__main__':
     #PRUEBA TEST alfa y beta pueden no ser numero primo, usaremos valores de 36 bits
     #https://poliformat.upv.es/access/content/group/DOC_34876_2022/Material%20asociado/RetosDL.txt usamos el del ejemplo
 
-    print(bsgs(alfa, beta, p))
+    print(babystepgiantstep(alfa, beta, p))
 
     #para test
-    #print(bsgs(9536854785, 7596854856, 3094892893)) #res: 1238021729
+    #print(babystepgiantstep(9536854785, 7596854856, 3094892893)) #res: 1238021729

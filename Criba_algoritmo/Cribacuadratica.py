@@ -43,8 +43,6 @@ def criba_cuadratica2(n):
       print(basefactores[i])
 
 
-
-
 def criba_cuadratica(n):
   primos = []
   for i in range(2, n+1):
@@ -62,7 +60,8 @@ def criba_cuadratica(n):
 
 
 if __name__ == '__main__':
-  print(criba_cuadratica(2534389177))
+  # probamos con un valor de 17 bits
+  print(criba_cuadratica(253438))
   iterador(0)
 
 
