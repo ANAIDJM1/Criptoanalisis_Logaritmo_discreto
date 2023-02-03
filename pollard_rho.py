@@ -1,4 +1,10 @@
-import math
+"""
+This is a simple, yet straight forward implementation of Pollard's rho algorithm for discrete logarithms
+It computes X such that G^X = H mod P.
+
+p must be a safe prime, such that there is a prime q for which p = 2q+1 holds true.
+"""
+
 
 def ext_euclid(a, b):
     """
@@ -73,11 +79,11 @@ def pollard(G, H, P):
         # Who needs pass-by reference when you have Python!!! ;)
 
         # Hedgehog
-        x, a, b = xab(x, a, b, G, H, P, Q)
+        x, a, b = xab(x, a, b, (G, H, P, Q))
 
         # Hare
-        X, A, B = xab(X, A, B, G, H, P, Q)
-        X, A, B = xab(X, A, B, G, H, P, Q)
+        X, A, B = xab(X, A, B, (G, H, P, Q))
+        X, A, B = xab(X, A, B, (G, H, P, Q))
 
         if x == X:
             break
@@ -86,7 +92,7 @@ def pollard(G, H, P):
     nom = a-A
     denom = B-b
 
-    print(nom, denom)
+    print (nom, denom)
 
     # It is necessary to compute the inverse to properly compute the fraction mod q
     res = (inverse(denom, Q) * nom) % Q
@@ -107,11 +113,6 @@ def verify(g, h, p, x):
     :param x: Computed X
     :return:
     """
-    p=math.ceil(p)
-    x=math.ceil(x)
-    g=math.ceil(g)
-    
-    
     return pow(g, x, p) == h
 
 M = 424242
@@ -132,8 +133,8 @@ args = [
 
 for arg in args:
     res = pollard(*arg)
-    print(arg)
-    print(",")
-    print(res)
+    print (arg, ': ', res)
     print ("Validates: ", verify(arg[0], arg[1], arg[2], res))
+
+
 

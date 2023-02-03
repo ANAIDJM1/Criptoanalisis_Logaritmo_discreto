@@ -38,5 +38,5 @@ def primo_fermat(n:int):
 
 if __name__ == '__main__':
     #primo de 11 bits
-    primo_fermat(2039)
+    primo_fermat(2534389)
 
